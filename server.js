@@ -1,12 +1,14 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const colors = require('colors')
+const listEndpoint = require('express-list-endpoints')
 //dependencia a la conexion de bd
 const connectDB = require('./config/db')
 
 //dependencias a las rutas
 const bootcampRoutes = require('./routes/BootcampRoutes')
 const userRoutes = require('./routes/UserRoutes')
+const listEndpoints = require('express-list-endpoints')
 
 //establecer el archivo de configuracion
 // con variables de entorno del proyecto
@@ -16,6 +18,7 @@ dotenv.config({
 
 //1 crear el ojeto aplicacion
 const app = express()
+app.use(express.json())
 
 //ejecutar la conexion a bd
 connectDB()
@@ -72,6 +75,8 @@ app.delete('/api/v1/bootcamps/:id', (req, res)=>{
         }
     )
 })*/
+
+console.log(listEndpoint(app))
 
 //3 ejecutar servidor de desarrollo express
 app.listen(process.env.PORT ,  ()=>{
