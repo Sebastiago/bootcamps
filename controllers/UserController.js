@@ -55,12 +55,12 @@ exports.ActualizarUser = async (req, res)=>{
 
 //delete: borrar un recurso
 exports.borrarUser =async (req, res)=>{
+    const borrar = await User.findByPk(req.params.id)
     await User.destroy({
         where: {
             id: req.params.id
         }
       });
-    const borrar = await User.findByPk(req.params.id)
     res.status(200).json(
         {
             "succes" : true,
