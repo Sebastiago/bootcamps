@@ -6,6 +6,8 @@ const listEndpoint = require('express-list-endpoints')
 const connectDB = require('./config/db')
 
 //dependencias a las rutas
+const reviewRoutes = require('./routes/ReviewRoutes')
+const courseRoutes = require('./routes/CourseRoutes')
 const bootcampRoutes = require('./routes/BootcampRoutes')
 const userRoutes = require('./routes/UserRoutes')
 const listEndpoints = require('express-list-endpoints')
@@ -22,7 +24,8 @@ app.use(express.json())
 
 //ejecutar la conexion a bd
 connectDB()
-
+app.use('/api/v1/reviews', reviewRoutes)
+app.use('/api/v1/courses', courseRoutes)
 app.use('/api/v1/bootcamps', bootcampRoutes)
 app.use('/api/v1/users', userRoutes)
 

@@ -18,10 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     phone: DataTypes.STRING,
     average_cost: DataTypes.FLOAT,
-    average_rating: DataTypes.INTEGER
+    average_rating: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Bootcamp',
+    timestamps: false
   });
   return Bootcamp;
 };
